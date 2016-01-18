@@ -2,6 +2,60 @@
 http://visjs.org
 
 
+## 2016-01-08, version 4.12.0
+
+### Timeline
+
+- Fixed #1527: error when creating/updating a Timeline without data.
+- Fixed #1127: `doubleClick` event not being fired.
+- Fixed #1554: wrong cursor on readonly range items.
+
+### Network
+
+- Fixed #1531, #1335:  border distances for arrow positioning
+- Fixed findNode method. It now does not return internal objects anymore.
+- Fixed #1529, clustering and declustering now respects the original settings of the edges for physics and hidden.
+- Fixed #1406, control nodes are now drawn immediately without a second redraw.
+- Fixed #1404, made the array returned by findNode match the docs.
+- Added #1138, enable the user to define the color of the shadows for nodes and edges.
+- Fixed #1528, #1278, avoided ID's being cast to string for methods that return ID's as well as storePositions casting to string.
+- Fixed upscaling when the window size increases.
+- Accepted pull request #1544, thanks @felixhayashi!
+- Fixed documented bug in #1544.
+
+
+## 2015-12-18, version 4.11.0
+
+### Network
+
+- Expose `setSelection` method. Thanks @zefrog.
+
+### Timeline
+
+- Fixed #1441: Height of subgroups not immediately updated after updating
+  data in a DataSet or DataView.
+- Fixed #1491: Problem using ctrl+drag in combination with using a `DataView`,
+  and an issue with ctrl+drag when using `snap: null`.
+- Fixed #1486: Item range sometimes wrongly calculated on IE in case of old dates.
+- Fixed #1523: end of data range wrongly determined.
+
+### Graph2d
+
+- Large refactoring of Graph2d code base:
+  - Implemented a new option for `shaded.orientation` to always shade towards zero.
+  - Implemented a new option for `shaded.orientation` to follow another group (fill in between)
+  - Implemented line-graph stacking
+  - Fixed support for using a `DataView` in Graph2d.
+  - Implemented a new zindex option for controlling svg rendering order.
+  - Performance updates and fixes
+
+### DataSet
+- Fixed #1487: DataSet cannot remove an item with id `0` correctly.
+
+### DataView
+- Added the map() function from DataSet.
+
+
 ## 2015-11-27, version 4.10.0
 
 ### General

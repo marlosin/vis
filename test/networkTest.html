@@ -1,280 +1,79 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-    <script src="../dist/vis.js"></script>
-    <link href="../dist/vis.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <script type="text/javascript" src="../dist/vis.js"></script> <!-- network handling framework -->
+    <link href="../dist/vis.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
-        .graph {
-            width: 100%;
-            height: 500px;
-        }  </style>
+        #network{
+            width: 1200px;
+            height: 800px;
+            border: 1px solid lightgray;
+        }
+    </style>
 </head>
 <body>
+<h1>Network Test</h1>
+<div id="network"></div>
+<script>
+    var nodes = new vis.DataSet([
+        {id: 1, label: '1'},
+        {id: 2, label: '2'},
+        {id: 3, label: '3'},
+        {id: 4, label: '4'},
+        {id: 5, label: '5'},
+        {id: 6, label: '6'},
+        {id: 7, label: '7'},
+    ]);
+    var edges = new vis.DataSet([
+        {id: "e1", from: 2, to: 1, label: "e1"},
+        {id: "e2", from: 3, to: 1, label: "e2"},
+        {id: "e3", from: 4, to: 1, label: "e3"},
+        {id: "e4", from: 5, to: 1, label: "e4"},
+        {id: "e5", from: 6, to: 1, label: "e5"},
+        {id: "e6", from: 2, to: 7, label: "e6"},
+        {id: "e7", from: 3, to: 7, label: "e7"},
+        {id: "e8", from: 4, to: 7, label: "e8"},
+        {id: "e9", from: 5, to: 7, label: "e9"},
+        {id: "e10", from: 6, to: 7, label: "e10"},
+    ]);
 
-Visjs does not recognize fixing of nodes after drag & drop of a node; nodes jump back to original position.
-
-<pre></pre>
-
-<div class="graph" id="visualization1"></div>
-<div id="config"></div>
-
-<script type="text/javascript">
-
-    var graph = {
-        "edges": [
-            {
-                "id": "2ef44388-2d14-4db0-a2c7-9bd27235a17f",
-                "from": "8044e455-d507-432e-bbc7-0d0308d29516",
-                "to": "80f69421-1bc0-4ea2-8eed-b9df6caac6a6",
-                "type": "tmap:unknown",
-                "title": "Automatically assigned to an edge that does not have a type assigned",
-                "color": "#f43bb1"
-            },
-            {
-                "id": "181f6f8f-f170-4e92-8dcb-01504d864102",
-                "from": "8044e455-d507-432e-bbc7-0d0308d29516",
-                "to": "67942477-eb7b-43c0-a9f9-7cc0d46664ca",
-                "type": "tmap:unknown",
-                "title": "Automatically assigned to an edge that does not have a type assigned",
-                "color": "#f43bb1"
-            },
-            {
-                "id": "aef8b80b-d072-4c6b-bb73-c892f1cb6feb",
-                "from": "80f69421-1bc0-4ea2-8eed-b9df6caac6a6",
-                "to": "1b678c21-fc88-46c8-9a96-b3fbe22ecef0",
-                "type": "tmap:unknown",
-                "title": "Automatically assigned to an edge that does not have a type assigned",
-                "color": "#f43bb1"
-            },
-            {
-                "id": "919f7789-500b-45d7-a129-4f29141155b9",
-                "from": "67942477-eb7b-43c0-a9f9-7cc0d46664ca",
-                "to": "ecfbe4b8-fa35-40ec-94e6-ed859a4c8f0f",
-                "type": "tmap:unknown",
-                "title": "Automatically assigned to an edge that does not have a type assigned",
-                "color": "#f43bb1"
-            },
-            {
-                "id": "992cf67b-4f05-4ec7-9f90-9723f829a051",
-                "from": "ed61cb00-8e20-4c5f-a3ee-fe7417b6b08b",
-                "to": "eeea9c37-3335-41b6-a9e3-47b44438d0d5",
-                "type": "tmap:unknown",
-                "title": "Automatically assigned to an edge that does not have a type assigned",
-                "color": "#f43bb1"
-            },
-            {
-                "id": "e70fd8ed-231e-4608-869a-846c1b3264b0",
-                "from": "eeea9c37-3335-41b6-a9e3-47b44438d0d5",
-                "to": "8044e455-d507-432e-bbc7-0d0308d29516",
-                "type": "tmap:unknown",
-                "title": "Automatically assigned to an edge that does not have a type assigned",
-                "color": "#f43bb1"
-            }
-        ],
-        "nodes": [
-            {
-                "id": "8044e455-d507-432e-bbc7-0d0308d29516",
-                "label": "Temple of Ihola",
-                "x": 409,
-                "y": 170,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "shape": "icon",
-                "icon": {
-                    "shape": "icon",
-                    "face": "FontAwesome",
-                    "code": ""
-                },
-                "font": {
-                    "color": "black"
-                }
-            },
-            {
-                "id": "ecfbe4b8-fa35-40ec-94e6-ed859a4c8f0f",
-                "label": "Temple of Sar",
-                "x": 763,
-                "y": 320,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "shape": "icon",
-                "icon": {
-                    "shape": "icon",
-                    "face": "FontAwesome",
-                    "code": ""
-                },
-                "font": {
-                    "color": "black"
-                }
-            },
-            {
-                "id": "80f69421-1bc0-4ea2-8eed-b9df6caac6a6",
-                "label": "Diamond mine",
-                "x": 331,
-                "y": 458,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "shape": "icon",
-                "icon": {
-                    "shape": "icon",
-                    "face": "FontAwesome",
-                    "code": ""
-                },
-                "font": {
-                    "color": "black"
-                }
-            },
-            {
-                "id": "67942477-eb7b-43c0-a9f9-7cc0d46664ca",
-                "label": "Castle of the Winds",
-                "x": 664,
-                "y": 132,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "shape": "icon",
-                "icon": {
-                    "shape": "icon",
-                    "face": "FontAwesome",
-                    "code": ""
-                },
-                "font": {
-                    "color": "black"
-                }
-            },
-            {
-                "id": "ed61cb00-8e20-4c5f-a3ee-fe7417b6b08b",
-                "label": "Start",
-                "x": 94,
-                "y": 314,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "font": {}
-            },
-            {
-                "id": "eeea9c37-3335-41b6-a9e3-47b44438d0d5",
-                "label": "Black forest",
-                "x": 266,
-                "y": 107,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "shape": "icon",
-                "icon": {
-                    "shape": "icon",
-                    "face": "FontAwesome",
-                    "code": ""
-                },
-                "font": {
-                    "color": "black"
-                }
-            },
-            {
-                "id": "1b678c21-fc88-46c8-9a96-b3fbe22ecef0",
-                "label": "Dragonland",
-                "x": 527,
-                "y": 444,
-                "fixed": {
-                    "x": true,
-                    "y": true
-                },
-                "color": {},
-                "shape": "icon",
-                "icon": {
-                    "shape": "icon",
-                    "face": "FontAwesome",
-                    "code": ""
-                },
-                "font": {
-                    "color": "black"
-                }
-            }
-        ]
-    };
-
+    // create a network
+    var container = document.getElementById('network');
     var data = {
-        nodes: new vis.DataSet(graph.nodes),
-        edges: new vis.DataSet(graph.edges)
+        nodes: nodes,
+        edges: edges
     };
-
     var options = {
-            autoResize: true,
-            height: '100%',
-            width: '100%',
-            physics: {
-                barnesHut: {
-                    centralGravity: 0
+        layout: {randomSeed: 8},
+        edges: {
+            arrows: {
+                to: {
+                    scaleFactor: 0.5
                 }
+            },
+            font: {
+                align: "middle"
             }
         }
-        ;
-
-    var container = document.getElementById("visualization1");
-
+    };
     var network = new vis.Network(container, data, options);
 
-    var hasNetworkStabilized = false;
+        var clusterOptionsByData = {
+            joinCondition: function(node) {
+                if (node.id > 1 && node.id < 7)
+                    return true;
+                return false;
+            },
+            clusterNodeProperties: {id:"c1", label:'c1'}
+        };
+        network.cluster(clusterOptionsByData);
 
-    network.on("stabilized", function(properties) {
 
-        if(!hasNetworkStabilized) {
-            hasNetworkStabilized = true;
-            network.fit();
-        }
-
-    });
-
-    network.on("dragStart", function(properties) {
-
-        if(!properties.nodes.length) return;
-        setNodesMoveable(properties.nodes, true);
-
-    });
-
-    network.on("dragEnd", function(properties) {
-
-        if(!properties.nodes.length) return;
-        setNodesMoveable(properties.nodes, false);
-
-    });
-
-    setNodesMoveable = function(nodeIds, isMoveable) {
-
-        // it only works if network.storePositions() is called before
-        // setting moved nodes to fixed state. In visjs v4.9 this was
-        // not required.
-        // network.storePositions();
-
-        var updates = [];
-        var isFixed = !isMoveable;
-        for(var i = nodeIds.length; i--;) {
-
-            updates.push({
-                id: nodeIds[i],
-                fixed: { x: isFixed, y: isFixed }
-            });
-
-        }
-
-        data.nodes.update(updates);
-
-    };
-
+    setTimeout(function() {
+        network.setOptions({layout: { hierarchical: { direction: "LR" }}});
+    },2000)
 </script>
 </body>
 </html>
