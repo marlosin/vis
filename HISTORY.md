@@ -2,6 +2,47 @@
 http://visjs.org
 
 
+## 2016-04-18, version 4.16.1
+
+### Timeline
+
+- Fixed #1786: Timeline having zero height on Internet Explorer, regression
+  introduced after fixing #1697.
+
+
+## 2016-04-07, version 4.16.0
+
+### Timeline
+
+- Implemented rtl support. Thanks @yotamberk.
+- Fixed #1697: Timeline not drawn when used within the Angular.js directive.
+- Fixed #1774: Wrong initial scale when Timeline contains a single item.
+
+### General
+
+- Created bundles for individual visualizations: `vis-graph3d.min.js`,
+  `vis-network.min.js`, and `vis-timeline-graph2d.min.js`.
+
+
+## 2016-03-08, version 4.15.1
+
+## General
+
+- Updated all dependencies.
+
+### Graph2d
+
+- Fixed #1455: allow vertical panning of the web page on touch devices.
+- Fixed #1692: Error when y-axis values are equal.
+
+### Timeline
+
+- Fixed #1455: allow vertical panning of the web page on touch devices.
+- Fixed #1695: Item line and dot not correctly reckoning with the line width
+  when using left or right align.
+- Fixed #1697: Timeline not drawn when used within the Angular.js directive.
+
+
 ## 2016-02-23, version 4.15.0
 
 ### Timeline
